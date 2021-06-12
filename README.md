@@ -1,2 +1,2 @@
 # dax-opsdashboard
-Dashboard for DAX Ops
+Operations Dashboard for DAX
