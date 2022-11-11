@@ -28,7 +28,13 @@ logging.basicConfig(
     level=logging.DEBUG, datefmt='%Y-%m-%d %H:%M:%S')
 
 
-SQUEUE_CMD = 'squeue -u '+','.join(SQUEUE_USER)+' --format="%all"'
+#SQUEUE_CMD = 'squeue -u '+','.join(SQUEUE_USER)+' --format="%all"'
+# NOTE: using format all is a problem when there are jobs that have 
+# used the constaint option with a list of names separated by vertical bar
+# since this is the same delimiter used by squeue formatting. So instead
+# we specify the fields we need.
+SQUEUE_CMD = 'squeue -u '+','.join(SQUEUE_USER)+' --format="%j|%A|%L|%m|%M|%p|%t|%u|%S|%T|%V|%l|"'
+
 
 DFORMAT = '%Y-%m-%d %H:%M:%S'
 
